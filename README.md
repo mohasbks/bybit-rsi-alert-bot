@@ -1,78 +1,73 @@
 <div align="center">
-  <h1>🤖 بوت تداول العملات المشفرة باستخدام مؤشر القوة النسبية RSI</h1>
+  <h1>🤖 Cryptocurrency Trading Bot with RSI Indicator</h1>
   <p>
-    <strong>مراقب ذكي لمؤشر RSI لأسواق العقود الآجلة الدائمة على منصة Bybit</strong>
+    <strong>Smart RSI monitoring for USDT Perpetual markets on Bybit</strong>
   </p>
   
   [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-  [![Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/RSIBYBIT)
-
 </div>
 
-## المميزات الرئيسية
+## Key Features
 
-- 🚀 **تنبيهات فورية** عند وصول RSI لـ 85 أو أعلى
-- ⚡ **تجاوز فترة الانتظار** عند وصول RSI لـ 90 أو أعلى
-- 📊 **تقارير دورية** كل 30 دقيقة عن حالة السوق
-- 🔔 **إشعارات تيليجرام** بجودة عالية مع إيموجيز توضيحية
-- 🛡️ **نظام حماية** من التكرار (Cooldown) مدته 4 ساعات
-- 📈 **دعم كامل** للغة العربية
-- 🔄 **فحص تلقائي** كل دقيقة (قابل للتخصيص)
-- 📝 **سجلات تفصيلية** لجميع العمليات
+- 🚀 **Instant Alerts** for RSI above 85
+- ⚡ **Cooldown Override** for RSI above 90
+- 📊 **Periodic Reports** every 30 minutes
+- 🛡️ **Cooldown Protection** (4 hours)
+- 🔄 **Automatic Scanning** every minute (configurable)
+- 📝 **Detailed Logs** of all operations
 
-## 🛠 المتطلبات
+## 🛠 Requirements
 
-- Python 3.8 أو أحدث
-- حساب على منصة Bybit (لجلب بيانات التداول)
-- بوت تيليجرام (احصل عليه من @BotFather)
-- معرف محادثة مجموعة تيليجرام (Chat ID)
+- Python 3.8 or newer
+- Bybit account (for API access)
+- Telegram Bot Token (get from @BotFather)
+- Telegram Chat ID (for receiving alerts)
 
-## 📥 التثبيت
+## 📥 Installation
 
-1. **استنسخ المستودع:**
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/yourusername/bybit-rsi-bot.git
    cd bybit-rsi-bot
    ```
 
-2. **قم بإنشاء بيئة افتراضية (مستحسن):**
+2. **Create a virtual environment (recommended):**
    ```bash
    python -m venv venv
    source venv/bin/activate  # Linux/Mac
-   # أو
+   # or
    .\venv\Scripts\activate  # Windows
    ```
 
-3. **تثبيت المتطلبات:**
+3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **إعداد بوت التيليجرام:**
-   - افتح @BotFather في تيليجرام
-   - أنشئ بوت جديد باستخدام الأمر `/newbot`
-   - احفظ رمز البوت (Bot Token) الذي ستحتاجه لاحقاً
-   - انضم إلى مجموعة التحديثات: [@RSIBYBIT](https://t.me/RSIBYBIT)
+4. **Set up Telegram Bot:**
+   - Open @BotFather in Telegram
+   - Create a new bot using `/newbot` command
+   - Save the Bot Token provided by BotFather
 
-5. **تكوين البوت:**
-   - انسخ ملف `config.example.json` إلى `config.json`
+5. **Configuration:**
+   - Copy the example config file:
    ```bash
    cp config.example.json config.json
    ```
-   - عدل ملف `config.json` واضبط الإعدادات التالية:
-     - `telegram_token`: رمز البوت الذي حصلت عليه من BotFather
-     - `telegram_chat_id`: ضعه كـ `-1002720769001` للإرسال إلى مجموعة التحديثات
-     - يمكنك ضبط الفواصل الزمنية والعتبات حسب احتياجاتك
+   - Edit `config.json` with your settings:
+     - `telegram_token`: Your Telegram Bot Token
+     - `telegram_chat_id`: Your Telegram Chat ID
+     - Adjust other settings as needed
 
-## ⚙️ الإعدادات
+## ⚙️ Configuration
 
-في ملف `config.json` يمكنك تخصيص إعدادات البوت:
+Customize the bot's behavior in `config.json`:
 
 ```json
 {
     "telegram_token": "YOUR_TELEGRAM_BOT_TOKEN",
-    "telegram_chat_id": -1002720769001,
+    "telegram_chat_id": "YOUR_CHAT_ID",
     "check_interval_minutes": 1,
     "rsi_period": 14,
     "rsi_high_threshold": 85,
@@ -85,209 +80,208 @@
 }
 ```
 
-### شرح الإعدادات:
+### Configuration Options:
 
-- `telegram_token`: رمز بوت تيليجرام الخاص بك (مطلوب)
-- `telegram_chat_id`: معرف المجموعة الهدف (محدد مسبقًا لمجموعة @RSIBYBIT)
-- `check_interval_minutes`: الفترة بين كل فحص للأسواق (بالدقائق)
-- `rsi_period`: فترة حساب مؤشر RSI (الافتراضي 14)
-- `rsi_high_threshold`: الحد الأدنى لإرسال تنبيه فوري (85)
-- `rsi_extreme_threshold`: الحد الذي يتجاوز به التنبيه فترة الانتظار (90)
-- `cooldown_hours`: فترة الانتظار قبل إرسال تنبيه جديد لنفس العملة (4 ساعات)
-- `report_interval_minutes`: الفترة بين كل تقرير دوري (30 دقيقة)
-- `timeframe`: الإطار الزمني للشموع (4h - 4 ساعات)
-- `max_retries`: عدد محاولات إعادة المحاولة في حالة الفشل
-- `retry_delay_seconds`: وقت الانتظار بين المحاولات (بالثواني)
+- `telegram_token`: Your Telegram Bot Token (required)
+- `telegram_chat_id`: Target chat ID for alerts (required)
+- `check_interval_minutes`: Market scan frequency in minutes (default: 1)
+- `rsi_period`: RSI calculation period (default: 14)
+- `rsi_high_threshold`: Minimum RSI level for alerts (default: 85)
+- `rsi_extreme_threshold`: RSI level that overrides cooldown (default: 90)
+- `cooldown_hours`: Hours to wait before resending alerts for the same coin (default: 4)
+- `report_interval_minutes`: Minutes between status reports (default: 30)
+- `timeframe`: Candle timeframe (default: "4h")
+- `max_retries`: Maximum retry attempts for failed requests (default: 3)
+- `retry_delay_seconds`: Delay between retry attempts (default: 5)
 
-## 🚀 التشغيل
+## 🚀 Running the Bot
 
-لتشغيل البوت:
+Start the bot with:
 
 ```bash
 python perfect_rsi_bot.py
 ```
 
-### ماذا يحدث عند التشغيل؟
+### What Happens When Running?
 
-1. **التهيئة**:
-   - تحميل الإعدادات من ملف `config.json`
-   - اختبار اتصال بوت تيليجرام
-   - جرد جميع أزواج التداول USDT Perpetual من Bybit
+1. **Initialization**:
+   - Load settings from `config.json`
+   - Test Telegram bot connection
+   - Fetch all USDT Perpetual trading pairs from Bybit
 
-2. **دورة المراقبة**:
-   - فحص RSI لجميع الأزواج كل دقيقة
-   - إرسال تنبيهات فورية عند:
-     - وصول RSI لـ 85 أو أعلى (إذا انقضت فترة الانتظار)
-     - وصول RSI لـ 90 أو أعلى (يتجاوز فترة الانتظار)
-   - إرسال تقرير دوري كل 30 دقيقة
-   - تسجيل جميع العمليات في سجل التشغيل
+2. **Monitoring Cycle**:
+   - Scan RSI for all pairs every minute
+   - Send instant alerts when:
+     - RSI reaches 85 or above (if cooldown has passed)
+     - RSI reaches 90 or above (overrides cooldown)
+   - Send periodic status reports
+   - Log all operations
 
-3. **معالجة الأخطاء**:
-   - إعادة المحاولة التلقائية عند فشل الطلبات
-   - تسجيل الأخطاء وإشعار المسؤول
-   - استئناف التشغيل بعد انقطاع
+3. **Error Handling**:
+   - Automatic retry for failed requests
+   - Error logging and notifications
+   - Automatic recovery after disconnections
 
-### أوامر إضافية
+### Additional Commands
 
-للتحقق من دقة حسابات RSI لعملة محددة:
+To verify RSI calculations for a specific symbol:
 
 ```bash
 python verify_rsi.py BTCUSDT
 ```
 
-هذا الأمر سيقوم بحساب RSI يدوياً ويقارنه مع قيم البوت لأغراض التحقق.
+This will manually calculate RSI and compare it with the bot's values for verification.
 
-## 📨 أمثلة على الرسائل
+## 📨 Message Examples
 
-### 1. تنبيه RSI مرتفع (85+)
+### 1. High RSI Alert (85+)
 ```
-🚨 *تنبيه RSI مرتفع!*
+🚨 *High RSI Alert!*
 
-📊 *الرمز:* `BTCUSDT`
-📈 *مستوى RSI:* 87.5
-🕒 *الوقت:* 2023-11-15 14:30:00
-⚠️ *ملاحظة:* RSI فوق 85
+📊 *Symbol:* `BTCUSDT`
+📈 *RSI Level:* 87.5
+🕒 *Time:* 2023-11-15 14:30:00
+⚠️ *Note:* RSI above 85
 
-📊 *التفاصيل:*
-- السعر الحالي: 37,542.50 USDT
-- التغيير (24h): +3.2%
-- الحجم (24h): 1.2B USDT
+📊 *Details:*
+- Current Price: 37,542.50 USDT
+- 24h Change: +3.2%
+- 24h Volume: 1.2B USDT
 
-🔔 *التنبيه التالي:* خلال 4 ساعات (ما لم يتجاوز RSI 90)
-```
-
-### 2. تنبيه RSI مرتفع جداً (90+)
-```
-🔥 *تحذير! RSI مرتفع جداً!* 🔥
-
-📊 *الرمز:* `ETHUSDT`
-📈 *مستوى RSI:* 92.8
-🕒 *الوقت:* 2023-11-15 14:35:00
-⚠️ *تحذير:* RSI فوق 90 - تجاوز فترة الانتظار!
-
-📊 *التفاصيل:*
-- السعر الحالي: 2,145.30 USDT
-- التغيير (24h): +5.7%
-- الحجم (24h): 850M USDT
-
-🔔 *التنبيه التالي:* سيتم إرسال تنبيه آخر إذا استمر الارتفاع
+🔔 *Next Alert:* In 4 hours (unless RSI crosses 90)
 ```
 
-### 3. التقرير الدوري (كل 30 دقيقة)
+### 2. Extreme RSI Alert (90+)
 ```
-📊 *تقرير حالة السوق*
+🔥 *Warning! Extreme RSI!* 🔥
 
-🕒 آخر تحديث: 2023-11-15 14:30:00
+📊 *Symbol:* `ETHUSDT`
+📈 *RSI Level:* 92.8
+🕒 *Time:* 2023-11-15 14:35:00
+⚠️ *Warning:* RSI above 90 - Cooldown overridden!
 
-📊 *إحصائيات RSI:*
-🔴 RSI ≥ 90: 2 عملة
-🟠 RSI 85-89: 5 عملات
-🟡 RSI 70-84: 12 عملة
-🟢 RSI < 70: 533 عملة
+📊 *Details:*
+- Current Price: 2,145.30 USDT
+- 24h Change: +5.7%
+- 24h Volume: 850M USDT
 
-📈 *أعلى 5 عملات من حيث RSI:*
+🔔 *Next Alert:* Will send another alert if RSI continues to rise
+```
+
+### 3. Periodic Market Report (Every 30 minutes)
+```
+📊 *Market Status Report*
+
+🕒 Last Updated: 2023-11-15 14:30:00
+
+📊 *RSI Statistics:*
+🔴 RSI ≥ 90: 2 coins
+🟠 RSI 85-89: 5 coins
+🟡 RSI 70-84: 12 coins
+🟢 RSI < 70: 533 coins
+
+📈 *Top 5 Coins by RSI:*
 1. `DOGEUSDT`: 93.2 📈
 2. `XRPUSDT`: 91.8 📈
 3. `SOLUSDT`: 88.3 ⬆️
 4. `ADAUSDT`: 86.7 ⬆️
 5. `MATICUSDT`: 82.1 ➡️
 
-⏳ التحديث القادم خلال 30 دقيقة...
+⏳ Next update in 30 minutes...
 ```
 
-## 🐛 استكشاف الأخطاء وإصلاحها
+## 🐛 Troubleshooting
 
-### البوت لا يرسل رسائل
-- ✅ تأكد من صحة `telegram_token` في ملف `config.json`
-- ✅ تأكد من أن البوت عضو في المجموعة المحددة
-- ✅ تأكد من صلاحيات البوت في المجموعة (يجب أن يتمكن من إرسال الرسائل)
-- ✅ تحقق من سجلات التشغيل للبحث عن أخطاء
+### Bot Not Sending Messages
+- ✅ Verify `telegram_token` in `config.json`
+- ✅ Ensure the bot is a member of the specified group
+- ✅ Check bot permissions in the group (must be able to send messages)
+- ✅ Check logs for any errors
 
-### أخطاء في الاتصال بمنصة Bybit
-- 🌐 تحقق من اتصال الإنترنت
-- 🔄 جرب تغيير خادم DNS إلى 8.8.8.8 أو 1.1.1.1
-- ⏱ أضف تأخيراً بين الطلبات إذا كنت تواجه قيود معدل الاستخدام
+### Bybit Connection Issues
+- 🌐 Check your internet connection
+- 🔄 Try changing DNS server to 8.8.8.8 or 1.1.1.1
+- ⏱ Add delay between requests if hitting rate limits
 
-### مشاكل في حساب RSI
-- 📊 استخدم أداة التحقق للتحقق من صحة الحسابات:
+### RSI Calculation Issues
+- 📊 Use the verification tool to validate calculations:
   ```bash
   python verify_rsi.py BTCUSDT
   ```
-- 🔄 تأكد من تحديث المكتبات:
+- 🔄 Make sure all dependencies are up to date:
   ```bash
   pip install --upgrade pandas pandas_ta requests
   ```
 
-## 📊 السجلات والمراقبة
+## 📊 Logging and Monitoring
 
-البوت يسجل جميع العمليات في الملفات التالية:
-- `bot.log`: سجل تفصيلي لجميع العمليات
-- `alerts.log`: سجل بجميع التنبيهات المرسلة
-- `errors.log`: سجل بالأخطاء والاستثناءات
+The bot logs all operations to the following files:
+- `bot.log`: Detailed operation log
+- `alerts.log`: Log of all sent alerts
+- `errors.log`: Error and exception log
 
-يمكنك مراقبة السجلات في الوقت الفعلي باستخدام:
+Monitor logs in real-time using:
 ```bash
 tail -f bot.log  # Linux/Mac
 Get-Content -Path "bot.log" -Wait  # Windows PowerShell
 ```
 
-## 💡 نصائح واستراتيجيات
+## 💡 Tips and Strategies
 
-### نصائح لاستخدام البوت بشكل فعال
+### Using the Bot Effectively
 
-1. **إدارة المخاطر**
-   - استخدم إشارات البوت كجزء من استراتيجية تداول شاملة
-   - لا تعتمد فقط على إشارات RSI في اتخاذ قرارات التداول
-   - استخدم أوامر وقف الخسارة دائمًا
+1. **Risk Management**
+   - Use bot signals as part of a comprehensive trading strategy
+   - Don't rely solely on RSI signals for trading decisions
+   - Always use stop-loss orders
 
-2. **تحسين الأداء**
-   - اضبط `check_interval_minutes` بناءً على احتياجاتك
-   - استخدم VPS لضمان استمرارية التشغيل
-   - راقب استهلاك موارد النظام خاصة مع زيادة عدد الأصول
+2. **Performance Optimization**
+   - Reduce the number of monitored pairs for better performance
+   - Use a VPS for continuous operation
+   - Adjust scan intervals based on your needs
 
-3. **التخصيص**
-   - يمكنك تعديل عتبات RSI في `config.json`
-   - أضف مؤشرات فنية إضافية حسب الحاجة
-   - قم بتخصيص رسائل التنبيه في الكود المصدري
+3. **Customization**
+   - Experiment with different RSI periods (7, 14, 21)
+   - Adjust alert thresholds based on market conditions
+   - Try different candle timeframes (1h, 4h, 1d)
 
-## 🤝 المساهمة في المشروع
+## 🤝 Contributing
 
-المساهمات مرحب بها! لمساعدتنا في تحسين البوت:
+Contributions are welcome! Here's how you can contribute:
 
-1. انسخ المشروع (Fork)
-2. أنشئ فرعاً للميزة الجديدة (`git checkout -b feature/AmazingFeature`)
-3. قم بحفظ التغييرات (`git commit -m 'Add some AmazingFeature'`)
-4. ادفع التغييرات إلى الفرع (`git push origin feature/AmazingFeature`)
-5. افتح طلب سحب (Pull Request)
+1. Fork the project (`git clone`)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Stage your changes (`git add .`)
+4. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+5. Push to the branch (`git push origin feature/AmazingFeature`)
+6. Open a Pull Request
 
-### الميزات المطلوبة
+### Features Wanted
 
-- [ ] إضافة مؤشرات فنية إضافية (MACD، Bollinger Bands)
-- [ ] دعم منصات تداول أخرى (Binance، FTX، إلخ)
-- [ ] واجهة ويب للتحكم في البوت
-- [ ] إضافة المزيد من خيارات التخصيص
+- [ ] Add more technical indicators (MACD, Bollinger Bands)
+- [ ] Support other exchanges (Binance, FTX, etc.)
+- [ ] Web interface for bot control
+- [ ] More customization options
 
-## 📄 الترخيص
+## 📄 License
 
-هذا المشروع مرخص بموجب [رخصة MIT](LICENSE) - انظر ملف [LICENSE](LICENSE) للتفاصيل.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 📞 الدعم
+## 📞 Support
 
-لأي استفسارات أو مشاكل:
-
-- انضم إلى مجموعة التحديثات: [@RSIBYBIT](https://t.me/RSIBYBIT)
-- افتح [issue](https://github.com/yourusername/bybit-rsi-bot/issues) جديد على GitHub
-- راسل المطور عبر البريد الإلكتروني: your.email@example.com
-
-## 🙏 الشكر والتقدير
-
-- فريق Bybit على واجهة برمجة التطبيقات الرائعة
-- مطورو مكتبات Python المستخدمة في هذا المشروع
-- المجتمع المالي المفتوح المصدر
+For technical support or questions:
+- 📧 Email: 235179@eru.edu.eg
+- 📱 Telegram: [@helloworled](https://t.me/helloworled)
 
 ---
+🙏 Acknowledgments
+Bybit team for the amazing API
 
-<div align="center">
+Developers of Python libraries used in this project
+
+Open-source financial community
+
+<div align="center"> <p>Made with ❤️ for crypto traders</p> <p>🚀 Happy Trading! 🚀</p> </div>
   <p>Made with ❤️ for crypto traders</p>
   <p>🚀 Happy Trading! 🚀</p>
-</div>
+</div>  to english
