@@ -282,6 +282,3 @@ Developers of Python libraries used in this project
 Open-source financial community
 
 <div align="center"> <p>Made with ❤️ for crypto traders</p> <p>🚀 Happy Trading! 🚀</p> </div>
-  <p>Made with ❤️ for crypto traders</p>
-  <p>🚀 Happy Trading! 🚀</p>
-</div>  to english
