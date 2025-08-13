@@ -8,7 +8,6 @@
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Telegram](https://img.shields.io/badge/Telegram-Group-blue.svg)](https://t.me/RSIBYBIT)
 
-  <img src="https://i.ibb.co/6nBZzXm/crypto-banner.png" alt="Cryptocurrency Trading Banner" width="800"/>
 </div>
 
 ## المميزات الرئيسية
