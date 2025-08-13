@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-بوت RSI المثالي - نسخة محسنة بالكامل
-تنبيهات فورية + تحديثات كل 30 دقيقة
-"""
-
 import asyncio
 import json
 import logging
@@ -15,7 +8,7 @@ import requests
 from telegram import Bot
 from telegram.error import TelegramError
 
-# إعداد السجلات
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
