@@ -28,7 +28,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/bybit-rsi-bot.git
+   git clone https://github.com/mohasbks/bybit-rsi-bot.git
    cd bybit-rsi-bot
    ```
 
